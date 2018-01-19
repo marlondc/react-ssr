@@ -1,29 +1,23 @@
 import 'raf/polyfill';
 import React from 'react';
 import { hydrate } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import Main from './containers/main';
+import reducer from './reducers';
 
-import Routes from './routes';
-import rootReducer from './reducers';
+// eslint-disable-next-line
+const preloadedState = window.__PRELOADED_STATE__
 
-let preloadedState = {};
+// eslint-disable-next-line
+delete window.__PRELOADED_STATE__
 
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line
-  preloadedState = window.__PRELOADED_STATE__;
-  // eslint-disable-next-line
-  delete window.__PRELOADED_STATE__;
-}
-
-const store = createStore(rootReducer, preloadedState);
+// Create Redux store with initial state
+const store = createStore(reducer, preloadedState);
 
 hydrate(
   <Provider store={store}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <Main />
   </Provider>,
   document.getElementById('root'),
 );
