@@ -2,10 +2,11 @@ import express from 'express';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 
 import reducer from './reducers';
-import Main from './containers/main';
+import Routes from './routes';
 
 const app = express();
 const port = 3000;
@@ -44,7 +45,9 @@ const handleRender = (req, res) => {
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <Main />
+      <StaticRouter location={req.url} context={{}}>
+        <Routes />
+      </StaticRouter>
     </Provider>,
   );
 

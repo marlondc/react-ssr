@@ -8,7 +8,7 @@ const Dotenv = require('dotenv-webpack');
 const client = {
   production: {
     plugins: [
-      new CleanWebpackPlugin(['public'], {
+      new CleanWebpackPlugin(['public', 'build'], {
         root: path.join(__dirname, '..'),
         verbose: true,
       }),

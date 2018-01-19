@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,6 +77,12 @@ module.exports = require("react-redux");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93,13 +99,13 @@ var increment = exports.increment = function increment() {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(4);
+var _express = __webpack_require__(5);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -107,19 +113,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _redux = __webpack_require__(5);
+var _redux = __webpack_require__(6);
 
 var _reactRedux = __webpack_require__(1);
 
-var _server = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(2);
 
-var _reducers = __webpack_require__(7);
+var _server = __webpack_require__(7);
+
+var _reducers = __webpack_require__(8);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _main = __webpack_require__(8);
+var _routes = __webpack_require__(9);
 
-var _main2 = _interopRequireDefault(_main);
+var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -145,7 +153,11 @@ var handleRender = function handleRender(req, res) {
   var html = (0, _server.renderToString)(_react2.default.createElement(
     _reactRedux.Provider,
     { store: store },
-    _react2.default.createElement(_main2.default, null)
+    _react2.default.createElement(
+      _reactRouterDom.StaticRouter,
+      { location: req.url, context: {} },
+      _react2.default.createElement(_routes2.default, null)
+    )
   ));
 
   // Grab the initial state from our Redux store
@@ -162,25 +174,25 @@ app.listen(port, function () {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -192,7 +204,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 var INITIAL_STATE = {
   name: 'MARLON',
@@ -215,7 +227,49 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(2);
+
+var _main = __webpack_require__(10);
+
+var _main2 = _interopRequireDefault(_main);
+
+var _marlon = __webpack_require__(12);
+
+var _marlon2 = _interopRequireDefault(_marlon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _main2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/marlon', component: _marlon2.default })
+    )
+  );
+};
+
+exports.default = App;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,11 +283,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _reactRedux = __webpack_require__(1);
 
-var _main = __webpack_require__(9);
+var _main = __webpack_require__(11);
 
 var _main2 = _interopRequireDefault(_main);
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -252,7 +306,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_main2.default);
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -277,6 +331,70 @@ var Main = function Main() {
 };
 
 exports.default = Main;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _reactRedux = __webpack_require__(1);
+
+var _marlon = __webpack_require__(13);
+
+var _marlon2 = _interopRequireDefault(_marlon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    hello: function hello() {
+      return dispatch(function () {
+        return console.log('hello');
+      });
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_marlon2.default);
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Marlon = function Marlon() {
+  return _react2.default.createElement(
+    'h1',
+    null,
+    'Marlon'
+  );
+};
+
+exports.default = Marlon;
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,9 @@ import React from 'react';
 import { hydrate } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import Main from './containers/main';
+import { BrowserRouter } from 'react-router-dom';
+
+import Routes from './routes';
 import reducer from './reducers';
 
 // eslint-disable-next-line
@@ -17,7 +19,9 @@ const store = createStore(reducer, preloadedState);
 
 hydrate(
   <Provider store={store}>
-    <Main />
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'),
 );
