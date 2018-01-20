@@ -11,7 +11,7 @@ import Routes from './routes';
 const app = express();
 const port = 3000;
 
-app.use('/static', express.static('public'));
+app.use(express.static('public'));
 
 const renderFullPage = (html, preloadedState) => (
   `
@@ -27,7 +27,7 @@ const renderFullPage = (html, preloadedState) => (
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/bundle.js"></script>
+        <script src="bundle.js"></script>
       </body>
     </html>
   `

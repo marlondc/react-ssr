@@ -11,7 +11,7 @@ const common = {
 };
 
 const client = {
-  entry: path.join(__dirname, 'src/index.jsx'),
+  entry: path.resolve(__dirname, 'src/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
