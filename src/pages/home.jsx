@@ -1,8 +1,6 @@
 import React from 'react';
+import Header from '../components/atoms/header';
 
-const Home = (props) => {
-  console.log(props);
-  return <h1>Home</h1>;
-};
+const Home = () => <Header>Marlon</Header>;
 
 export default Home;

@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Lato/Lato-Regular.ttf') format('open-type');
+}
+
+@font-face {
+  font-family: 'Stag Sans Book';
+  src: url('./fonts/VNFStagSansBook.eot');
+  src:
+    url('./fonts/VNFStagSansBook.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/VNFStagSansBook.woff') format('woff'),
+    url('./fonts/VNFStagSansBook.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

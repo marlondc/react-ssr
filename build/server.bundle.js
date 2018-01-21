@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,25 +70,51 @@
 module.exports = require("react");
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
 
 /***/ }),
-/* 2 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
 /***/ }),
-/* 3 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _express = __webpack_require__(4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var INCREMENT = exports.INCREMENT = 'INCREMENT';
+var increment = exports.increment = function increment() {
+  return {
+    type: INCREMENT
+  };
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(9);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -96,19 +122,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _redux = __webpack_require__(5);
+var _redux = __webpack_require__(10);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(5);
 
-var _reactRouterDom = __webpack_require__(2);
+var _reactRouterDom = __webpack_require__(6);
 
-var _server = __webpack_require__(6);
+var _server = __webpack_require__(11);
 
-var _reducers = __webpack_require__(7);
+var _reducers = __webpack_require__(12);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _routes = __webpack_require__(9);
+var _routes = __webpack_require__(13);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -120,7 +146,7 @@ var port = 3000;
 app.use(_express2.default.static('public'));
 
 var renderFullPage = function renderFullPage(html, preloadedState) {
-  return '\n    <!doctype html>\n    <html>\n      <head>\n        <title>Redux Universal Example</title>\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="bundle.js"></script>\n      </body>\n    </html>\n  ';
+  return '\n    <!doctype html>\n    <html>\n      <head>\n        <title>Redux Universal Example</title>\n        <meta charset="UTF-8" />\n        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">\n        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />\n        <link rel="stylesheet" type="text/css" href="main.css" />\n      </head>\n      <body>\n        <div id="root">' + html + '</div>\n        <script>\n          // WARNING: See the following for security issues around embedding JSON in HTML:\n          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations\n          window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n        </script>\n        <script src="bundle.js"></script>\n      </body>\n    </html>\n  ';
 };
 
 var handleRender = function handleRender(req, res) {
@@ -157,25 +183,25 @@ app.listen(port, function () {
 });
 
 /***/ }),
-/* 4 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 5 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 6 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 7 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -187,7 +213,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(8);
+var _actions = __webpack_require__(7);
 
 var INITIAL_STATE = {
   name: 'MARLON',
@@ -210,24 +236,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var INCREMENT = exports.INCREMENT = 'INCREMENT';
-var increment = exports.increment = function increment() {
-  return {
-    type: INCREMENT
-  };
-};
-
-/***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -241,21 +250,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(2);
+var _reactRouterDom = __webpack_require__(6);
 
-var _home = __webpack_require__(10);
+var _home = __webpack_require__(17);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _about = __webpack_require__(12);
+var _about = __webpack_require__(19);
 
 var _about2 = _interopRequireDefault(_about);
 
-var _notFound = __webpack_require__(14);
+var _notFound = __webpack_require__(25);
 
 var _notFound2 = _interopRequireDefault(_notFound);
 
-var _nav = __webpack_require__(15);
+var _nav = __webpack_require__(27);
 
 var _nav2 = _interopRequireDefault(_nav);
 
@@ -265,6 +274,11 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
+    _react2.default.createElement(
+      'a',
+      { href: '#content' },
+      'Skip to Content'
+    ),
     _react2.default.createElement(_nav2.default, null),
     _react2.default.createElement(
       _reactRouterDom.Switch,
@@ -279,7 +293,10 @@ var App = function App() {
 exports.default = App;
 
 /***/ }),
-/* 10 */
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -291,9 +308,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(5);
 
-var _home = __webpack_require__(11);
+var _home = __webpack_require__(18);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -319,7 +336,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_home2.default);
 
 /***/ }),
-/* 11 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -333,21 +350,24 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _header = __webpack_require__(28);
+
+var _header2 = _interopRequireDefault(_header);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Home = function Home(props) {
-  console.log(props);
+var Home = function Home() {
   return _react2.default.createElement(
-    'h1',
+    _header2.default,
     null,
-    'Home'
+    'Marlon'
   );
 };
 
 exports.default = Home;
 
 /***/ }),
-/* 12 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -359,9 +379,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(5);
 
-var _about = __webpack_require__(13);
+var _about = __webpack_require__(20);
 
 var _about2 = _interopRequireDefault(_about);
 
@@ -387,7 +407,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_about2.default);
 
 /***/ }),
-/* 13 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -414,7 +434,11 @@ var About = function About() {
 exports.default = About;
 
 /***/ }),
-/* 14 */
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -441,7 +465,8 @@ var NotFound = function NotFound() {
 exports.default = NotFound;
 
 /***/ }),
-/* 15 */
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -455,36 +480,114 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(2);
+var _reactRouterDom = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Navigation = function Navigation() {
   return _react2.default.createElement(
-    'ul',
+    'nav',
     null,
     _react2.default.createElement(
-      'li',
-      null,
+      'ul',
+      { className: 'nav__list' },
       _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/' },
-        'Home'
-      )
-    ),
-    _react2.default.createElement(
-      'li',
-      null,
+        'li',
+        { className: 'nav__link' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/' },
+          'Home'
+        )
+      ),
       _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/about' },
-        'About'
+        'li',
+        { className: 'nav__link' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/about' },
+          'About'
+        )
       )
     )
   );
 };
 
 exports.default = Navigation;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header(_ref) {
+  var type = _ref.type,
+      children = _ref.children;
+
+  switch (type) {
+    case 'h1':
+      return _react2.default.createElement(
+        'h1',
+        null,
+        children
+      );
+
+    case 'h2':
+      return _react2.default.createElement(
+        'h2',
+        null,
+        children
+      );
+
+    case 'h3':
+      return _react2.default.createElement(
+        'h3',
+        null,
+        children
+      );
+
+    case 'h4':
+      return _react2.default.createElement(
+        'h4',
+        null,
+        children
+      );
+
+    default:
+      return _react2.default.createElement(
+        'h5',
+        null,
+        children
+      );
+  }
+};
+
+Header.defaultProps = {
+  type: 'h1'
+};
+
+Header.propTypes = {
+  type: _propTypes2.default.string,
+  children: _propTypes2.default.string.isRequired
+};
+
+exports.default = Header;
 
 /***/ })
 /******/ ]);

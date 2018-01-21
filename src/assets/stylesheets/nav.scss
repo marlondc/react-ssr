@@ -1,0 +1,18 @@
+nav {
+  float: right;
+}
+
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__link {
+  display: inline-block;
+  margin-right: 10px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}

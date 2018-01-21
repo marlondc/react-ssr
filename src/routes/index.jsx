@@ -8,6 +8,7 @@ import Nav from '../components/nav';
 
 const App = () => (
   <div>
+    <a href="#content">Skip to Content</a>
     <Nav />
 
     <Switch>

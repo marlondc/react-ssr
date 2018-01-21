@@ -8,6 +8,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import reducer from './reducers';
 
+import './assets/images/favicon.ico';
+import './assets/stylesheets/main.scss';
+
+
 // eslint-disable-next-line
 const preloadedState = window.__PRELOADED_STATE__
 
