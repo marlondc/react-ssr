@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,51 +70,25 @@
 module.exports = require("react");
 
 /***/ }),
-/* 1 */,
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("prop-types");
-
-/***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
 
 /***/ }),
-/* 6 */
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
 /***/ }),
-/* 7 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var INCREMENT = exports.INCREMENT = 'INCREMENT';
-var increment = exports.increment = function increment() {
-  return {
-    type: INCREMENT
-  };
-};
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _express = __webpack_require__(9);
+var _express = __webpack_require__(4);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -122,19 +96,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _redux = __webpack_require__(10);
+var _redux = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(1);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(2);
 
-var _server = __webpack_require__(11);
+var _server = __webpack_require__(6);
 
-var _reducers = __webpack_require__(12);
+var _reducers = __webpack_require__(7);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _routes = __webpack_require__(13);
+var _routes = __webpack_require__(9);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -183,25 +157,25 @@ app.listen(port, function () {
 });
 
 /***/ }),
-/* 9 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 10 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 11 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 12 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -213,7 +187,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _actions = __webpack_require__(7);
+var _actions = __webpack_require__(8);
 
 var INITIAL_STATE = {
   name: 'MARLON',
@@ -236,7 +210,24 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 13 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var INCREMENT = exports.INCREMENT = 'INCREMENT';
+var increment = exports.increment = function increment() {
+  return {
+    type: INCREMENT
+  };
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -250,21 +241,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(6);
+var _reactRouterDom = __webpack_require__(2);
 
-var _home = __webpack_require__(17);
+var _home = __webpack_require__(10);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _about = __webpack_require__(19);
+var _about = __webpack_require__(14);
 
 var _about2 = _interopRequireDefault(_about);
 
-var _notFound = __webpack_require__(25);
+var _notFound = __webpack_require__(16);
 
 var _notFound2 = _interopRequireDefault(_notFound);
 
-var _nav = __webpack_require__(27);
+var _nav = __webpack_require__(17);
 
 var _nav2 = _interopRequireDefault(_nav);
 
@@ -293,10 +284,7 @@ var App = function App() {
 exports.default = App;
 
 /***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -308,9 +296,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(1);
 
-var _home = __webpack_require__(18);
+var _home = __webpack_require__(11);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -336,7 +324,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_home2.default);
 
 /***/ }),
-/* 18 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -350,7 +338,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _header = __webpack_require__(28);
+var _header = __webpack_require__(12);
 
 var _header2 = _interopRequireDefault(_header);
 
@@ -367,47 +355,7 @@ var Home = function Home() {
 exports.default = Home;
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _reactRedux = __webpack_require__(5);
-
-var _about = __webpack_require__(20);
-
-var _about2 = _interopRequireDefault(_about);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mapStateToProps = function mapStateToProps(state) {
-  return _extends({}, state);
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    what: function what() {
-      return dispatch(function () {
-        return console.log('what');
-      });
-    },
-    hello: function hello() {
-      return console.log('hello');
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_about2.default);
-
-/***/ }),
-/* 20 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -421,116 +369,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var About = function About() {
-  return _react2.default.createElement(
-    'h1',
-    null,
-    'About'
-  );
-};
-
-exports.default = About;
-
-/***/ }),
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NotFound = function NotFound() {
-  return _react2.default.createElement(
-    'h1',
-    null,
-    'Not Found'
-  );
-};
-
-exports.default = NotFound;
-
-/***/ }),
-/* 26 */,
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(6);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Navigation = function Navigation() {
-  return _react2.default.createElement(
-    'nav',
-    null,
-    _react2.default.createElement(
-      'ul',
-      { className: 'nav__list' },
-      _react2.default.createElement(
-        'li',
-        { className: 'nav__link' },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/' },
-          'Home'
-        )
-      ),
-      _react2.default.createElement(
-        'li',
-        { className: 'nav__link' },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/about' },
-          'About'
-        )
-      )
-    )
-  );
-};
-
-exports.default = Navigation;
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(2);
+var _propTypes = __webpack_require__(13);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -588,6 +427,156 @@ Header.propTypes = {
 };
 
 exports.default = Header;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _reactRedux = __webpack_require__(1);
+
+var _about = __webpack_require__(15);
+
+var _about2 = _interopRequireDefault(_about);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    what: function what() {
+      return dispatch(function () {
+        return console.log('what');
+      });
+    },
+    hello: function hello() {
+      return console.log('hello');
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_about2.default);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var About = function About() {
+  return _react2.default.createElement(
+    'h1',
+    null,
+    'About'
+  );
+};
+
+exports.default = About;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NotFound = function NotFound() {
+  return _react2.default.createElement(
+    'h1',
+    null,
+    'Not Found'
+  );
+};
+
+exports.default = NotFound;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navigation = function Navigation() {
+  return _react2.default.createElement(
+    'nav',
+    null,
+    _react2.default.createElement(
+      'ul',
+      { className: 'nav__list' },
+      _react2.default.createElement(
+        'li',
+        { className: 'nav__link' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/' },
+          'Home'
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        { className: 'nav__link' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/about' },
+          'About'
+        )
+      )
+    )
+  );
+};
+
+exports.default = Navigation;
 
 /***/ })
 /******/ ]);

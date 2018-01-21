@@ -9,7 +9,7 @@ import Routes from './routes';
 import reducer from './reducers';
 
 import './assets/images/favicon.ico';
-import './assets/stylesheets/main.scss';
+import './assets/stylesheets/app.scss';
 
 
 // eslint-disable-next-line

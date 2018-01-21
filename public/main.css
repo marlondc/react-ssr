@@ -12,13 +12,37 @@ nav {
   .nav__link:last-of-type {
     margin-right: 0; }
 
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(assets/fonts/Lato/Lato-Regular.ttf) format("opentype"); }
+
+@font-face {
+  font-family: 'Playfair Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf) format("opentype"); }
+
+@font-face {
+  font-family: 'Playfair Bold';
+  src: url(assets/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf) format("opentype"); }
+
+h1, h2, h3, h4, h5, p {
+  margin: 0; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Bold'; }
+
+p {
+  font-family: 'Lato Regular'; }
+
 html,
 body {
+  font-family: 'Lato Regular';
   margin: 0; }
 
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYWluLmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/
