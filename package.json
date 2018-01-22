@@ -35,6 +35,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^22.1.4",
     "nodemon": "^1.14.11",
+    "sync-exec": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1"
   },
@@ -60,6 +61,8 @@
       "raf/polyfill",
       "<rootDir>/__tests__/config/setup.js"
     ],
-    "modulePathIgnorePatterns": ["<rootDir>/__tests__/config"]
+    "modulePathIgnorePatterns": [
+      "<rootDir>/__tests__/config"
+    ]
   }
 }
