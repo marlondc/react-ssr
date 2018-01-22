@@ -17,11 +17,11 @@ app.use(express.static('public'));
 const renderFullPage = (html, preloadedState) => (
   `
     <!doctype html>
-    <html>
+    <html lang=en>
       <head>
         <title>Redux Universal Example</title>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <link rel="stylesheet" type="text/css" href="main.css" />
       </head>
