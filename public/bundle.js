@@ -3421,6 +3421,10 @@ var _reducers = __webpack_require__(123);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
+var _game = __webpack_require__(134);
+
+var _game2 = _interopRequireDefault(_game);
+
 __webpack_require__(125);
 
 __webpack_require__(126);
@@ -3434,7 +3438,10 @@ var preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
 
 // Create Redux store with initial state
-var store = (0, _redux.createStore)(_reducers2.default, preloadedState);
+var store = (0, _redux.createStore)((0, _redux.combineReducers)({
+  reducer: _reducers2.default,
+  game: _game2.default
+}), preloadedState);
 
 (0, _reactDom.hydrate)(_react2.default.createElement(
   _reactRedux.Provider,
@@ -25625,6 +25632,10 @@ var _about = __webpack_require__(119);
 
 var _about2 = _interopRequireDefault(_about);
 
+var _game = __webpack_require__(132);
+
+var _game2 = _interopRequireDefault(_game);
+
 var _notFound = __webpack_require__(121);
 
 var _notFound2 = _interopRequireDefault(_notFound);
@@ -25638,10 +25649,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var App = function App() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'page' },
     _react2.default.createElement(
       'a',
-      { href: '#content' },
+      { href: '#content', className: 'skip-to' },
       'Skip to Content'
     ),
     _react2.default.createElement(_nav2.default, null),
@@ -25650,6 +25661,7 @@ var App = function App() {
       null,
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/game', component: _game2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { component: _notFound2.default })
     )
   );
@@ -25720,9 +25732,34 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home() {
   return _react2.default.createElement(
-    _header2.default,
-    null,
-    'Marlon'
+    'div',
+    { id: 'content' },
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          _header2.default,
+          null,
+          'Marlon'
+        ),
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: 'https://github.com/marlondc' },
+              'github'
+            )
+          )
+        )
+      )
+    )
   );
 };
 
@@ -25747,48 +25784,36 @@ var _propTypes = __webpack_require__(3);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _uuid = __webpack_require__(129);
+
+var _uuid2 = _interopRequireDefault(_uuid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(_ref) {
   var type = _ref.type,
       children = _ref.children;
-
-  switch (type) {
-    case 'h1':
-      return _react2.default.createElement(
-        'h1',
-        null,
-        children
-      );
-
-    case 'h2':
-      return _react2.default.createElement(
-        'h2',
-        null,
-        children
-      );
-
-    case 'h3':
-      return _react2.default.createElement(
-        'h3',
-        null,
-        children
-      );
-
-    case 'h4':
-      return _react2.default.createElement(
-        'h4',
-        null,
-        children
-      );
-
-    default:
-      return _react2.default.createElement(
-        'h5',
-        null,
-        children
-      );
-  }
+  return [type === 'h1' && _react2.default.createElement(
+    'h1',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h2' && _react2.default.createElement(
+    'h2',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h3' && _react2.default.createElement(
+    'h3',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h4' && _react2.default.createElement(
+    'h4',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h5' && _react2.default.createElement(
+    'h5',
+    { key: (0, _uuid2.default)() },
+    children
+  )];
 };
 
 Header.defaultProps = {
@@ -25857,13 +25882,25 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _header = __webpack_require__(118);
+
+var _header2 = _interopRequireDefault(_header);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var About = function About() {
   return _react2.default.createElement(
-    'h1',
+    'div',
     null,
-    'About'
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(
+        _header2.default,
+        null,
+        'About'
+      )
+    )
   );
 };
 
@@ -25924,20 +25961,29 @@ var Navigation = function Navigation() {
       { className: 'nav__list' },
       _react2.default.createElement(
         'li',
-        { className: 'nav__link' },
+        { className: 'nav__list__item' },
         _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/' },
+          { to: '/', className: 'nav__link' },
           'Home'
         )
       ),
       _react2.default.createElement(
         'li',
-        { className: 'nav__link' },
+        { className: 'nav__list__item' },
         _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/about' },
+          { to: '/about', className: 'nav__link' },
           'About'
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        { className: 'nav__list__item' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/game', className: 'nav__link' },
+          'Game'
         )
       )
     )
@@ -26009,6 +26055,489 @@ module.exports = __webpack_require__.p + "assets/images/favicon.ico";
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && msCrypto.getRandomValues.bind(msCrypto));
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  return bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] + '-' +
+          bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]] +
+          bth[buf[i++]] + bth[buf[i++]];
+}
+
+module.exports = bytesToUuid;
+
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(130);
+var v4 = __webpack_require__(131);
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(127);
+var bytesToUuid = __webpack_require__(128);
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/broofa/node-uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(127);
+var bytesToUuid = __webpack_require__(128);
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
+
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(17);
+
+var _game = __webpack_require__(133);
+
+var _game2 = _interopRequireDefault(_game);
+
+var _game3 = __webpack_require__(135);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var game = _ref.game;
+  return game;
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    pick: function pick(pos) {
+      return dispatch((0, _game3.pick)(pos));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_game2.default);
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(3);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _header = __webpack_require__(118);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Game = function Game(_ref) {
+  var wins = _ref.wins,
+      X = _ref.X,
+      O = _ref.O,
+      pick = _ref.pick,
+      losses = _ref.losses;
+  return _react2.default.createElement(
+    'div',
+    { id: 'content', className: 'container' },
+    _react2.default.createElement(
+      _header2.default,
+      null,
+      'Game'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Wins: ',
+      wins
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Losses: ',
+      losses
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'game__grid' },
+      [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function (pos) {
+        if (X.includes(pos)) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'game__square', key: pos },
+            _react2.default.createElement(
+              'p',
+              null,
+              'X'
+            )
+          );
+        } else if (O.includes(pos)) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'game__square', key: pos },
+            _react2.default.createElement(
+              'p',
+              null,
+              'O'
+            )
+          );
+        }
+
+        return _react2.default.createElement(
+          'div',
+          {
+            className: 'game__square game__square--clickable',
+            key: pos, onClick: function onClick() {
+              return pick(pos);
+            }
+          },
+          '?'
+        );
+      })
+    )
+  );
+};
+
+Game.propTypes = {
+  wins: _propTypes2.default.number.isRequired,
+  losses: _propTypes2.default.number.isRequired,
+  X: _propTypes2.default.arrayOf(_propTypes2.default.number).isRequired,
+  O: _propTypes2.default.arrayOf(_propTypes2.default.number).isRequired,
+  pick: _propTypes2.default.func.isRequired
+};
+
+exports.default = Game;
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _game = __webpack_require__(135);
+
+var _game2 = __webpack_require__(136);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var initialState = {
+  wins: 0,
+  losses: 0,
+  X: [],
+  O: []
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _game.PICK:
+      {
+        var pos = action.pos;
+
+        var newX = [].concat(_toConsumableArray(state.X), [pos]);
+
+        if ((0, _game2.containsWinningCombination)(newX)) {
+          return _extends({}, state, {
+            wins: state.wins + 1,
+            X: [],
+            O: []
+          });
+        }
+
+        var newO = [].concat(_toConsumableArray(state.O), [(0, _game2.pickSquare)(newX, state.O)]);
+
+        if ((0, _game2.containsWinningCombination)(newO)) {
+          return _extends({}, state, {
+            losses: state.losses + 1,
+            X: [],
+            O: []
+          });
+        }
+
+        return _extends({}, state, {
+          X: newX,
+          O: newO
+        });
+      }
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var PICK = exports.PICK = 'PICK';
+var pick = exports.pick = function pick(pos) {
+  return {
+    type: PICK,
+    pos: pos
+  };
+};
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var containsWinningCombination = exports.containsWinningCombination = function containsWinningCombination(arr) {
+  if (
+  // horizontal combos
+  arr.includes(0) && arr.includes(1) && arr.includes(2) || arr.includes(3) && arr.includes(4) && arr.includes(5) || arr.includes(6) && arr.includes(7) && arr.includes(8) ||
+  // vertical combos
+  arr.includes(0) && arr.includes(3) && arr.includes(6) || arr.includes(1) && arr.includes(4) && arr.includes(7) || arr.includes(2) && arr.includes(5) && arr.includes(8) ||
+  // diagonal combos
+  arr.includes(0) && arr.includes(4) && arr.includes(8) || arr.includes(2) && arr.includes(4) && arr.includes(6)) {
+    return true;
+  }
+  return false;
+};
+
+var pickSquare = exports.pickSquare = function pickSquare(xArr, oArr) {
+  var randInt = Math.floor(Math.random() * 9);
+  if (!xArr.includes(randInt) && !oArr.includes(randInt)) {
+    return randInt;
+  }
+  return pickSquare(xArr, oArr);
+};
 
 /***/ })
 /******/ ]);

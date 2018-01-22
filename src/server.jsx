@@ -1,11 +1,12 @@
 import express from 'express';
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 
 import reducer from './reducers';
+import game from './reducers/game';
 import Routes from './routes';
 
 const app = express();
@@ -39,12 +40,15 @@ const renderFullPage = (html, preloadedState) => (
 
 const handleRender = (req, res) => {
   // Create a new Redux store instance
-  const preloadedState = {
-    name: 'MARLON',
-    value: 0,
-  };
+  const preloadedState = {};
 
-  const store = createStore(reducer, preloadedState);
+  const store = createStore(
+    combineReducers({
+      reducer,
+      game,
+    }),
+    preloadedState,
+  );
 
   // Render the component to a string
   const html = renderToString(

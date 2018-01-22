@@ -1,6 +1,19 @@
 import React from 'react';
-import Header from '../components/atoms/header';
+import HeaderTag from '../components/atoms/header';
 
-const Home = () => <Header>Marlon</Header>;
+const Home = () => (
+  <div id="content">
+    <header>
+      <div className="container">
+        <HeaderTag>Marlon</HeaderTag>
+        <ul>
+          <li>
+            <a href="https://github.com/marlondc">github</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+  </div>
+);
 
 export default Home;

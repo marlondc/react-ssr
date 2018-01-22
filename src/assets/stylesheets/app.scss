@@ -1,5 +1,6 @@
 @import 'nav';
 @import 'fonts';
+@import 'game';
 
 html,
 body {
@@ -11,4 +12,23 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.skip-to {
+  color: #000;
+  left: -999px;
+  position: absolute;
+
+  &:focus {
+    left: 15px;
+    top: 10px;
+  }
+}
+
+.page {
+  background: #f8f8f8;
+}
+
+.container {
+  padding: 55px 15px;
 }

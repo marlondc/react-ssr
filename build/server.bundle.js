@@ -108,6 +108,10 @@ var _reducers = __webpack_require__(7);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
+var _game = __webpack_require__(21);
+
+var _game2 = _interopRequireDefault(_game);
+
 var _routes = __webpack_require__(9);
 
 var _routes2 = _interopRequireDefault(_routes);
@@ -125,12 +129,12 @@ var renderFullPage = function renderFullPage(html, preloadedState) {
 
 var handleRender = function handleRender(req, res) {
   // Create a new Redux store instance
-  var preloadedState = {
-    name: 'MARLON',
-    value: 0
-  };
+  var preloadedState = {};
 
-  var store = (0, _redux.createStore)(_reducers2.default, preloadedState);
+  var store = (0, _redux.createStore)((0, _redux.combineReducers)({
+    reducer: _reducers2.default,
+    game: _game2.default
+  }), preloadedState);
 
   // Render the component to a string
   var html = (0, _server.renderToString)(_react2.default.createElement(
@@ -251,6 +255,10 @@ var _about = __webpack_require__(14);
 
 var _about2 = _interopRequireDefault(_about);
 
+var _game = __webpack_require__(19);
+
+var _game2 = _interopRequireDefault(_game);
+
 var _notFound = __webpack_require__(16);
 
 var _notFound2 = _interopRequireDefault(_notFound);
@@ -264,10 +272,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var App = function App() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'page' },
     _react2.default.createElement(
       'a',
-      { href: '#content' },
+      { href: '#content', className: 'skip-to' },
       'Skip to Content'
     ),
     _react2.default.createElement(_nav2.default, null),
@@ -276,6 +284,7 @@ var App = function App() {
       null,
       _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _about2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/game', component: _game2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { component: _notFound2.default })
     )
   );
@@ -346,9 +355,34 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home() {
   return _react2.default.createElement(
-    _header2.default,
-    null,
-    'Marlon'
+    'div',
+    { id: 'content' },
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          _header2.default,
+          null,
+          'Marlon'
+        ),
+        _react2.default.createElement(
+          'ul',
+          null,
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: 'https://github.com/marlondc' },
+              'github'
+            )
+          )
+        )
+      )
+    )
   );
 };
 
@@ -373,48 +407,36 @@ var _propTypes = __webpack_require__(13);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _uuid = __webpack_require__(18);
+
+var _uuid2 = _interopRequireDefault(_uuid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(_ref) {
   var type = _ref.type,
       children = _ref.children;
-
-  switch (type) {
-    case 'h1':
-      return _react2.default.createElement(
-        'h1',
-        null,
-        children
-      );
-
-    case 'h2':
-      return _react2.default.createElement(
-        'h2',
-        null,
-        children
-      );
-
-    case 'h3':
-      return _react2.default.createElement(
-        'h3',
-        null,
-        children
-      );
-
-    case 'h4':
-      return _react2.default.createElement(
-        'h4',
-        null,
-        children
-      );
-
-    default:
-      return _react2.default.createElement(
-        'h5',
-        null,
-        children
-      );
-  }
+  return [type === 'h1' && _react2.default.createElement(
+    'h1',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h2' && _react2.default.createElement(
+    'h2',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h3' && _react2.default.createElement(
+    'h3',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h4' && _react2.default.createElement(
+    'h4',
+    { key: (0, _uuid2.default)() },
+    children
+  ), type === 'h5' && _react2.default.createElement(
+    'h5',
+    { key: (0, _uuid2.default)() },
+    children
+  )];
 };
 
 Header.defaultProps = {
@@ -489,13 +511,25 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _header = __webpack_require__(12);
+
+var _header2 = _interopRequireDefault(_header);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var About = function About() {
   return _react2.default.createElement(
-    'h1',
+    'div',
     null,
-    'About'
+    _react2.default.createElement(
+      'header',
+      null,
+      _react2.default.createElement(
+        _header2.default,
+        null,
+        'About'
+      )
+    )
   );
 };
 
@@ -556,20 +590,29 @@ var Navigation = function Navigation() {
       { className: 'nav__list' },
       _react2.default.createElement(
         'li',
-        { className: 'nav__link' },
+        { className: 'nav__list__item' },
         _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/' },
+          { to: '/', className: 'nav__link' },
           'Home'
         )
       ),
       _react2.default.createElement(
         'li',
-        { className: 'nav__link' },
+        { className: 'nav__list__item' },
         _react2.default.createElement(
           _reactRouterDom.Link,
-          { to: '/about' },
+          { to: '/about', className: 'nav__link' },
           'About'
+        )
+      ),
+      _react2.default.createElement(
+        'li',
+        { className: 'nav__list__item' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/game', className: 'nav__link' },
+          'Game'
         )
       )
     )
@@ -577,6 +620,264 @@ var Navigation = function Navigation() {
 };
 
 exports.default = Navigation;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("uuid");
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(1);
+
+var _game = __webpack_require__(20);
+
+var _game2 = _interopRequireDefault(_game);
+
+var _game3 = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var game = _ref.game;
+  return game;
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    pick: function pick(pos) {
+      return dispatch((0, _game3.pick)(pos));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_game2.default);
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(13);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _header = __webpack_require__(12);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Game = function Game(_ref) {
+  var wins = _ref.wins,
+      X = _ref.X,
+      O = _ref.O,
+      pick = _ref.pick,
+      losses = _ref.losses;
+  return _react2.default.createElement(
+    'div',
+    { id: 'content', className: 'container' },
+    _react2.default.createElement(
+      _header2.default,
+      null,
+      'Game'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Wins: ',
+      wins
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'Losses: ',
+      losses
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'game__grid' },
+      [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function (pos) {
+        if (X.includes(pos)) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'game__square', key: pos },
+            _react2.default.createElement(
+              'p',
+              null,
+              'X'
+            )
+          );
+        } else if (O.includes(pos)) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'game__square', key: pos },
+            _react2.default.createElement(
+              'p',
+              null,
+              'O'
+            )
+          );
+        }
+
+        return _react2.default.createElement(
+          'div',
+          {
+            className: 'game__square game__square--clickable',
+            key: pos, onClick: function onClick() {
+              return pick(pos);
+            }
+          },
+          '?'
+        );
+      })
+    )
+  );
+};
+
+Game.propTypes = {
+  wins: _propTypes2.default.number.isRequired,
+  losses: _propTypes2.default.number.isRequired,
+  X: _propTypes2.default.arrayOf(_propTypes2.default.number).isRequired,
+  O: _propTypes2.default.arrayOf(_propTypes2.default.number).isRequired,
+  pick: _propTypes2.default.func.isRequired
+};
+
+exports.default = Game;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _game = __webpack_require__(22);
+
+var _game2 = __webpack_require__(23);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var initialState = {
+  wins: 0,
+  losses: 0,
+  X: [],
+  O: []
+};
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _game.PICK:
+      {
+        var pos = action.pos;
+
+        var newX = [].concat(_toConsumableArray(state.X), [pos]);
+
+        if ((0, _game2.containsWinningCombination)(newX)) {
+          return _extends({}, state, {
+            wins: state.wins + 1,
+            X: [],
+            O: []
+          });
+        }
+
+        var newO = [].concat(_toConsumableArray(state.O), [(0, _game2.pickSquare)(newX, state.O)]);
+
+        if ((0, _game2.containsWinningCombination)(newO)) {
+          return _extends({}, state, {
+            losses: state.losses + 1,
+            X: [],
+            O: []
+          });
+        }
+
+        return _extends({}, state, {
+          X: newX,
+          O: newO
+        });
+      }
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var PICK = exports.PICK = 'PICK';
+var pick = exports.pick = function pick(pos) {
+  return {
+    type: PICK,
+    pos: pos
+  };
+};
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var containsWinningCombination = exports.containsWinningCombination = function containsWinningCombination(arr) {
+  if (
+  // horizontal combos
+  arr.includes(0) && arr.includes(1) && arr.includes(2) || arr.includes(3) && arr.includes(4) && arr.includes(5) || arr.includes(6) && arr.includes(7) && arr.includes(8) ||
+  // vertical combos
+  arr.includes(0) && arr.includes(3) && arr.includes(6) || arr.includes(1) && arr.includes(4) && arr.includes(7) || arr.includes(2) && arr.includes(5) && arr.includes(8) ||
+  // diagonal combos
+  arr.includes(0) && arr.includes(4) && arr.includes(8) || arr.includes(2) && arr.includes(4) && arr.includes(6)) {
+    return true;
+  }
+  return false;
+};
+
+var pickSquare = exports.pickSquare = function pickSquare(xArr, oArr) {
+  var randInt = Math.floor(Math.random() * 9);
+  if (!xArr.includes(randInt) && !oArr.includes(randInt)) {
+    return randInt;
+  }
+  return pickSquare(xArr, oArr);
+};
 
 /***/ })
 /******/ ]);
