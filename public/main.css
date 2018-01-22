@@ -18,6 +18,9 @@ nav {
   .nav__link:focus, .nav__link:hover {
     text-decoration: underline; }
 
+.nav__link--selected {
+  text-decoration: underline; }
+
 @font-face {
   font-family: 'Lato Regular';
   font-style: normal;

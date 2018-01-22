@@ -26,6 +26,8 @@ const store = createStore(
     game,
   }),
   preloadedState,
+  // eslint-disable-next-line
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // uncomment for devtools
 );
 
 hydrate(

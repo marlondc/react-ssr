@@ -592,8 +592,13 @@ var Navigation = function Navigation() {
         'li',
         { className: 'nav__list__item' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/', className: 'nav__link' },
+          _reactRouterDom.NavLink,
+          {
+            exact: true,
+            to: '/',
+            activeClassName: 'nav__link--selected',
+            className: 'nav__link'
+          },
           'Home'
         )
       ),
@@ -601,8 +606,12 @@ var Navigation = function Navigation() {
         'li',
         { className: 'nav__list__item' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/about', className: 'nav__link' },
+          _reactRouterDom.NavLink,
+          {
+            to: '/about',
+            activeClassName: 'nav__link--selected',
+            className: 'nav__link'
+          },
           'About'
         )
       ),
@@ -610,8 +619,12 @@ var Navigation = function Navigation() {
         'li',
         { className: 'nav__list__item' },
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/game', className: 'nav__link' },
+          _reactRouterDom.NavLink,
+          {
+            to: '/game',
+            activeClassName: 'nav__link--selected',
+            className: 'nav__link'
+          },
           'Game'
         )
       )
