@@ -12,7 +12,7 @@
     "build:dev": "concurrently -k \"npm run build:client:dev\" \"npm run build:server:dev\"",
     "build:client:dev": "webpack --config webpack/webpack.config.js --watch",
     "build:server:dev": "webpack --config webpack/webpack.config.js --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/jest"
   },
   "keywords": [],
   "author": "",
@@ -25,12 +25,15 @@
     "babel-preset-stage-2": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "dotenv-webpack": "^1.5.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
+    "jest": "^22.1.4",
     "nodemon": "^1.14.11",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1"
@@ -45,5 +48,18 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.s?css$": "<rootDir>/__tests__/config/stub.js"
+    },
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/__tests__/config/setup.js"
+    ],
+    "modulePathIgnorePatterns": ["<rootDir>/__tests__/config"]
   }
 }
