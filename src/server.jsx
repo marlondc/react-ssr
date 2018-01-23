@@ -21,6 +21,7 @@ const renderFullPage = (html, preloadedState) => (
       <head>
         <title>Redux Universal Example</title>
         <meta charset="UTF-8" />
+        <meta name="Description" content="Personal website for Marlon DC">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0">
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
         <link rel="stylesheet" type="text/css" href="main.css" />
@@ -67,5 +68,11 @@ const handleRender = (req, res) => {
 };
 
 app.use(handleRender);
+
+app.get('*.js', (req, res, next) => {
+  req.url = `${req.url}.gz`;
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 app.listen(port, () => console.log(`listening on port ${port}`));
