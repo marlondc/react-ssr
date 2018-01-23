@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Lato/Lato-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Playfair Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Playfair Bold';
+  src: url('../fonts/Playfair_Display/PlayfairDisplay-Bold.ttf') format('opentype');
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Bold';
+}
+
+p {
+  font-family: 'Lato Regular'
+}

@@ -1,0 +1,85 @@
+nav {
+  float: right; }
+
+.nav__list {
+  list-style: none;
+  padding: 0 15px 0 0;
+  margin: 10px 0 0 0; }
+
+.nav__list__item {
+  display: inline-block;
+  margin-right: 10px; }
+  .nav__list__item:last-of-type {
+    margin-right: 0; }
+
+.nav__link {
+  color: #000;
+  text-decoration: none; }
+  .nav__link:focus, .nav__link:hover {
+    text-decoration: underline; }
+
+.nav__link--selected {
+  text-decoration: underline; }
+
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(assets/fonts/Lato/Lato-Regular.ttf) format("opentype"); }
+
+@font-face {
+  font-family: 'Playfair Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf) format("opentype"); }
+
+@font-face {
+  font-family: 'Playfair Bold';
+  src: url(assets/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf) format("opentype"); }
+
+h1, h2, h3, h4, h5, p {
+  margin: 0; }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Bold'; }
+
+p {
+  font-family: 'Lato Regular'; }
+
+.game__grid {
+  width: 300px; }
+
+.game__square {
+  border: 1px solid #000;
+  display: inline-block;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  width: 100px; }
+
+.game__square--clickable {
+  cursor: pointer; }
+
+html,
+body {
+  font-family: 'Lato Regular';
+  margin: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.skip-to {
+  color: #000;
+  left: -999px;
+  position: absolute; }
+  .skip-to:focus {
+    left: 15px;
+    top: 10px; }
+
+.page {
+  background: #f8f8f8; }
+
+.container {
+  padding: 55px 15px; }

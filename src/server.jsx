@@ -1,11 +1,12 @@
 import express from 'express';
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 
 import reducer from './reducers';
+import game from './reducers/game';
 import Routes from './routes';
 
 const app = express();
@@ -16,9 +17,14 @@ app.use(express.static('public'));
 const renderFullPage = (html, preloadedState) => (
   `
     <!doctype html>
-    <html>
+    <html lang=en>
       <head>
         <title>Redux Universal Example</title>
+        <meta charset="UTF-8" />
+        <meta name="Description" content="Personal website for Marlon DC">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="main.css" />
       </head>
       <body>
         <div id="root">${html}</div>
@@ -35,12 +41,15 @@ const renderFullPage = (html, preloadedState) => (
 
 const handleRender = (req, res) => {
   // Create a new Redux store instance
-  const preloadedState = {
-    name: 'MARLON',
-    value: 0,
-  };
+  const preloadedState = {};
 
-  const store = createStore(reducer, preloadedState);
+  const store = createStore(
+    combineReducers({
+      reducer,
+      game,
+    }),
+    preloadedState,
+  );
 
   // Render the component to a string
   const html = renderToString(
@@ -59,5 +68,11 @@ const handleRender = (req, res) => {
 };
 
 app.use(handleRender);
+
+app.get('*.js', (req, res, next) => {
+  req.url = `${req.url}.gz`;
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 app.listen(port, () => console.log(`listening on port ${port}`));

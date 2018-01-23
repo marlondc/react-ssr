@@ -1,8 +1,8 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const fs = require('fs');
-const plugins = require('./webpack/plugins');
-const modules = require('./webpack/modules');
+const plugins = require('./plugins');
+const modules = require('./modules');
 
 const common = {
   resolve: {
@@ -11,22 +11,22 @@ const common = {
 };
 
 const client = {
-  entry: path.resolve(__dirname, 'src/index.jsx'),
+  entry: path.resolve(__dirname, '../src/index.jsx'),
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, '../public'),
     filename: 'bundle.js',
   },
   target: 'web',
 };
 
 const server = {
-  entry: path.join(__dirname, 'src/server.jsx'),
+  entry: path.join(__dirname, '../src/server.jsx'),
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, '../build'),
     filename: 'server.bundle.js',
   },
   target: 'node',
-  externals: fs.readdirSync(path.resolve(__dirname, 'node_modules'))
+  externals: fs.readdirSync(path.resolve(__dirname, '../node_modules'))
     .concat(['react-dom/server'])
     .reduce((ext, mod) => {
       const external = ext;

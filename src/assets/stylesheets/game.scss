@@ -1,0 +1,16 @@
+.game__grid {
+  width: 300px
+}
+
+.game__square {
+  border: 1px solid #000;
+  display: inline-block;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  width: 100px;
+}
+
+.game__square--clickable {
+  cursor: pointer;
+}
